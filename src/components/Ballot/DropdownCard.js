@@ -21,7 +21,7 @@ function DropdownCard({races, handleDropCardClick}) {
                 </h1>
                 <button
                     className="select-position-button"
-                    onClick={handleDropCardClick}
+                    onClick={()=> handleDropCardClick(races)}
                     >
                     Select Position
                     

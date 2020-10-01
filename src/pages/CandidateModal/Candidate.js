@@ -3,7 +3,7 @@ import './Candidate.scss'
 
 import CandidateDeck from '../../components/CandidateDeck/CandidateDeck'
 
-function Candidate({isDropCardClicked, handleDropCardClick, categoryName}) {
+function Candidate({isDropCardClicked, handleDropCardClick, categoryName, cardData}) {
     const [ isDisplay, setIsDisplay ] = useState(false)
 
     useEffect(()=>{
@@ -28,7 +28,7 @@ function Candidate({isDropCardClicked, handleDropCardClick, categoryName}) {
                 <h1>District 4</h1>
                 <p>Candidates</p>
 
-                <CandidateDeck />
+                <CandidateDeck cardData={cardData}/>
 
             </div>
         </div>

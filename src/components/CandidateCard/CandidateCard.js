@@ -2,7 +2,7 @@ import React from 'react'
 import './CandidateCard.scss'
 
 
-function CandidateCard() {
+function CandidateCard({candidate}) {
     return (
         
         <div className='candidate-card'>
@@ -10,8 +10,8 @@ function CandidateCard() {
                 <i class="fas fa-user-circle"></i>
             </div>
             <div className='card-body'>
-                <h1>Canadate Name</h1>
-                <p>Prefers Democractic party</p>
+                <h1>{candidate.BallotName}</h1>
+                <p>Prefers {candidate.PartyName}</p>
                 <h2>I am about:</h2>
                 <ol>
                     <li>1. Issue</li>

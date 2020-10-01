@@ -12,11 +12,13 @@ function BallotMeasure(){
     const [ category, setCategory ] = useState([])
     const [ categoryName, setCategoryName ] = useState('')
     const [ isDropCardClicked, setIsDroCardClicked] = useState(false)
+    const [ cardData, setCardData ] = useState({})
     
     
 
-    const handleDropCardClick = ()=>{
+    const handleDropCardClick = (data)=>{
       console.log('dropCardClick')
+      if(data !== undefined) setCardData(data)
       setIsDroCardClicked(!isDropCardClicked)
     }
    
@@ -56,10 +58,12 @@ function BallotMeasure(){
               <ReferendumModal isDropCardClicked={isDropCardClicked}
               handleDropCardClick={handleDropCardClick}
               categoryName={categoryName}
+              cardData={cardData}
               />
               <CandidateModal isDropCardClicked={isDropCardClicked}
               handleDropCardClick={handleDropCardClick}
               categoryName={categoryName}
+              cardData={cardData}
               />
 
               <div className="ballot-bottom-buttons">
