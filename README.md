@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # myBallot-WA
 
 ## Mobile ballot builder created to simplify and streamline the voting process for all voters.
@@ -60,3 +61,21 @@ Tools: <span style="font-weight: normal">GitHub, Trello, Figma, Netlify</span>
 - User can filter ballot items based on address entered in onboarding form.
 - User can print or email final ballot page.
 - Ballot items displaying complete data (photos, bio summary, etc).
+=======
+# myBallot
+Personalized Ballot Builder mobile web application for voters in Washington state.
+
+## Live Link
+https://myballot.netlify.app/
+
+## Contributors
+* Developers
+  * Eric Bondoc
+  * Travis Tincher
+  * Leah Mattern
+  * Zhijie (Jenny) Xu
+* UX/UI Designers
+  * DaiJea Fuller
+  * Shani Millar-Vaughn
+  * Kat Pham
+>>>>>>> 594a61f2add13531f4757a46573d8226e3af8a30

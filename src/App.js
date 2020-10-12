@@ -3,6 +3,8 @@ import "./App.scss";
 import { Route } from "react-router-dom";
 import axios from "axios";
 
+import dataImport from './Data'
+
 import LandingPage from "./pages/LandingPage/Landing";
 import OnboardingOne from "./pages/Onboarding/Onboarding1";
 import OnboardingTwo from "./pages/Onboarding/Onboarding2";
@@ -33,19 +35,19 @@ function App() {
 
 
   useEffect(()=>{
-    getData()
+    setData(dataImport)
   }, [])
 
-  const getData = () => {
-    axios
-      .get(
-        `https://cors-anywhere.herokuapp.com/https://voter.votewa.gov/elections/voterguide.ashx?e=866&la=&c=99&p=XX`
-      )
-      .then((res) => {
-        console.log('res.data', res.data)
-        setData(res.data)
-      })
-  };
+  // const getData = () => {
+  //   axios
+  //     .get(
+  //       `https://cors-anywhere.herokuapp.com/https://voter.votewa.gov/elections/voterguide.ashx?e=866&la=&c=99&p=XX`
+  //     )
+  //     .then((res) => {
+  //       console.log('res.data', res.data)
+  //       setData(res.data)
+  //     })
+  // };
 
   return (
     <div className="App">
