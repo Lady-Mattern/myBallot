@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { DataContext } from "../../App";
 import { Link } from "react-router-dom";
+0
 
 import "./EndBallotPage.scss";
 import dklogo from "../../images/myBallotWA_Black.svg";
