@@ -110,12 +110,10 @@ function EndBallotPage() {
           <h2>Measures</h2>
           {ballot.Measures.map((measure) => (
             <div className="infoCard">
-              <div className="infoCardBox">
-                <p className="position">{measure.name}</p>
-                <p className="name">
-                  {measure.isApproved ? "Approved" : "Rejected"}
-                </p>
-              </div>
+              <p className="position">{measure.name}</p>
+              <p className="name">
+                {measure.isApproved ? "Approved" : "Rejected"}
+              </p>
             </div>
           ))}
         </div>
