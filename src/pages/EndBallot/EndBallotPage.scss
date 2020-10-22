@@ -1,6 +1,8 @@
 .EndBallotPage {
   background: none;
   height: 100%;
+  max-width: 700px;
+  margin: 0 auto;
 
   .nav-links {
     display: flex;

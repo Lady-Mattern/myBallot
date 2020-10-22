@@ -124,13 +124,13 @@ function MyDocument({ ballot }) {
         </View>
         <View className="catCard">
           <Text style={styles.category}>Measures</Text>
-          {ballot.Measures.map((candidate) => (
+          {ballot.Measures.map((measure) => (
             <View wrap={false} style={styles.candidateCard} className="infoCard">
               <Text style={styles.positionTitle} className="position">
-                {candidate.position}
+                {measure.name}
               </Text>
               <Text style={styles.candidateName} className="name">
-                {candidate.name}
+                {measure.isApproved ? "Approved" : "Rejected"}
               </Text>
             </View>
           ))}
