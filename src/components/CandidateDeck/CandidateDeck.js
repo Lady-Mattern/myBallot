@@ -1,26 +1,41 @@
-import React from 'react'
-import CandidateCard from '../CandidateCard/CandidateCard'
-import './CandidateDeck.scss'
+import React, { useState, useContext } from "react";
+import CandidateCard from "../CandidateCard/CandidateCard";
+import "./CandidateDeck.scss";
+import { DataContext } from "../../App";
 
-function CandidateDeck({cardData, categoryName}) {
-    const candidates = cardData.Candidates
+function CandidateDeck({ cardData, categoryName }) {
+  const [addToBallot, setAddToBallot] = useState(false);
 
-    console.log('cardData', cardData)
+  const { ballot } = useContext(DataContext);
+  let category = categoryName.split(" ").join("");
+  let candidates = [];
 
-    let candidateMap =[];
+  if (ballot[category] !== undefined) {
+    const selectedCandidate = ballot[category].filter(
+      (candidate) => candidate.position === cardData.BallotTitle
+    );
+    candidates =
+      selectedCandidate.length === 1 ? selectedCandidate : cardData.Candidates;
+  } else {
+    candidates = cardData.Candidates;
+  }
 
-    if(candidates !== undefined){
-        candidateMap = candidates.map((candidate)=>(
-            <CandidateCard candidate={candidate} categoryName={categoryName} position={cardData.BallotTitle}/>
-        ))
-    }
+  let candidateMap = [];
+  if (candidates !== undefined) {
+    candidateMap = candidates.map((candidate) => {
+      return (
+        <CandidateCard
+          candidate={candidate}
+          categoryName={categoryName}
+          position={cardData.BallotTitle}
+          key={candidate.BallotID}
+          addToBallot={addToBallot}
+        />
+      );
+    });
+  }
 
-    return (
-        <div className='candidate-card-container'>
-            {candidateMap}    
-        </div>
-       
-    )
+  return <div className="candidate-card-container">{candidateMap}</div>;
 }
 
-export default CandidateDeck
+export default CandidateDeck;

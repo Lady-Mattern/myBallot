@@ -1,17 +1,18 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import "./CandidateCard.scss";
 import { DataContext } from "../../App";
 
-function CandidateCard({ candidate, categoryName, position }) {
+function CandidateCard({ candidate, categoryName, position, addToBallot }) {
   const { ballot, setBallot } = useContext(DataContext);
+  // const [addToBallot, setAddToBallot] = useState(false);
 
   const handleAddClick = () => {
     let cName = categoryName.split(" ").join("");
     let b = ballot[cName];
 
     b.push({
-      name: candidate.BallotName,
-      party: candidate.PartyName,
+      BallotName: candidate.BallotName,
+      PartyName: candidate.PartyName,
       position: position,
     });
 
@@ -19,7 +20,12 @@ function CandidateCard({ candidate, categoryName, position }) {
       ...ballot,
       cName: b,
     });
+
+    // setAddToBallot(!addToBallot);
   };
+
+  // const handleClick
+  console.log(addToBallot);
 
   return (
     <div className="candidate-card">
@@ -36,12 +42,33 @@ function CandidateCard({ candidate, categoryName, position }) {
           <li>3. Issue</li>
         </ol>
         <div className="buttonGroup">
-          <button
+          {addToBallot ? (
+            <button
+              className="addToBallotButton"
+              onClick={() => handleAddClick()}
+            >
+              REMOVE FROM BALLOT
+            </button>
+          ) : (
+            <button
+              className="addToBallotButton"
+              onClick={() => handleAddClick()}
+            >
+              ADD TO BALLOT
+            </button>
+          )}
+          {/* <button
             className="addToBallotButton"
             onClick={() => handleAddClick()}
           >
             ADD TO BALLOT
           </button>
+          <button
+            className="addToBallotButton"
+            onClick={() => handleAddClick()}
+          >
+            REMOVE FROM BALLOT
+          </button> */}
           <button className="learnMoreButton">LEARN MORE</button>
         </div>
       </div>
