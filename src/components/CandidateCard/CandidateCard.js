@@ -64,18 +64,6 @@ function CandidateCard({
               ADD TO BALLOT
             </button>
           )}
-          {/* <button
-            className="addToBallotButton"
-            onClick={() => handleAddClick()}
-          >
-            ADD TO BALLOT
-          </button>
-          <button
-            className="addToBallotButton"
-            onClick={() => handleAddClick()}
-          >
-            REMOVE FROM BALLOT
-          </button> */}
           <button className="learnMoreButton">LEARN MORE</button>
         </div>
       </div>
