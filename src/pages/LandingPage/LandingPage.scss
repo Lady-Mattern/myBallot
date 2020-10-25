@@ -2,7 +2,8 @@
 
 .LandingPage {
   background: linear-gradient(#8ec43b, #218a42);
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
 
   #button-div {
     margin-top: 50px;
