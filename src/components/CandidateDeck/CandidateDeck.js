@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import CandidateCard from "../CandidateCard/CandidateCard";
 import "./CandidateDeck.scss";
 // import { DataContext } from "../../App";
@@ -8,7 +8,6 @@ function CandidateDeck({ cardData, categoryName }) {
 
   // const { ballot, setBallot } = useContext(DataContext);
 
-  // const { ballot } = useContext(DataContext);
   // let category = categoryName.split(" ").join("");
   // let candidates = [];
 
@@ -21,6 +20,26 @@ function CandidateDeck({ cardData, categoryName }) {
   // } else {
   //   candidates = cardData.Candidates;
   // }
+
+  // const position = cardData.BallotTitle;
+  // useEffect(() => {
+  //   if (position !== undefined) {
+  //     let cName = categoryName.split(" ").join("");
+  //     ballot[cName] = [];
+  //     chosenCandidate.forEach((candidate) =>
+  //       ballot[cName].push({
+  //         BallotName: candidate.BallotName,
+  //         PartyName: candidate.PartyName,
+  //         position: position,
+  //       })
+  //     );
+  //     console.log("ballot[cName]", ballot[cName]);
+
+  //     setBallot({
+  //       ...ballot,
+  //     });
+  //   }
+  // }, [chosenCandidate]);
 
   const candidates = cardData.Candidates;
 
@@ -62,6 +81,7 @@ function CandidateDeck({ cardData, categoryName }) {
             key={candidate.BallotID}
             handleChosenCandidate={() => handleChosenCandidate(candidate)}
             addToBallot={chosenCandidate.includes(candidate)}
+            chosenCandidate={chosenCandidate}
           />
         );
       });
@@ -75,6 +95,7 @@ function CandidateDeck({ cardData, categoryName }) {
             key={candidate.BallotID}
             handleChosenCandidate={() => handleChosenCandidate(candidate)}
             addToBallot={chosenCandidate.includes(candidate)}
+            chosenCandidate={chosenCandidate}
           />
         );
       });

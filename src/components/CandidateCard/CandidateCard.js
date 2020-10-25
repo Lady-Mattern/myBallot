@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "./CandidateCard.scss";
 import { DataContext } from "../../App";
 
@@ -8,25 +8,33 @@ function CandidateCard({
   position,
   handleChosenCandidate,
   addToBallot,
+  chosenCandidate,
 }) {
   const { ballot, setBallot } = useContext(DataContext);
 
   const handleAddClick = () => {
     handleChosenCandidate();
-    let cName = categoryName.split(" ").join("");
-    let b = ballot[cName];
-
-    b.push({
-      BallotName: candidate.BallotName,
-      PartyName: candidate.PartyName,
-      position: position,
-    });
-
-    setBallot({
-      ...ballot,
-      cName: b,
-    });
   };
+
+  //  const position = cardData.BallotTitle;
+  useEffect(() => {
+    if (position !== undefined) {
+      let cName = categoryName.split(" ").join("");
+      ballot[cName] = [];
+      chosenCandidate.forEach((candidate) =>
+        ballot[cName].push({
+          BallotName: candidate.BallotName,
+          PartyName: candidate.PartyName,
+          position: position,
+        })
+      );
+      console.log("ballot[cName]", ballot[cName]);
+
+      setBallot({
+        ...ballot,
+      });
+    }
+  }, [chosenCandidate]);
 
   console.log("addToBallot", addToBallot);
 
