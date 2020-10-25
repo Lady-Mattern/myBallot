@@ -1,11 +1,10 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import CandidateCard from "../CandidateCard/CandidateCard";
 import "./CandidateDeck.scss";
 // import { DataContext } from "../../App";
 
 function CandidateDeck({ cardData, categoryName }) {
   const [chosenCandidate, setChosenCandidate] = useState([]);
-  const [foundMatch, setFoundMatch] = useState(false);
 
   // const { ballot, setBallot } = useContext(DataContext);
 
@@ -38,20 +37,10 @@ function CandidateDeck({ cardData, categoryName }) {
     setChosenCandidate(tempChosenCandidate);
   };
 
-  useEffect(() => {
-    if (candidates !== undefined) {
-      let found = chosenCandidate.some(
-        (chosen) => candidates.indexOf(chosen) !== -1
-      );
-      setFoundMatch(found);
-    }
-  }, [chosenCandidate]);
-
   let candidateMap = [];
   if (candidates !== undefined) {
     console.log("cardData.Candidates", candidates);
     console.log("chosen candidates", chosenCandidate);
-    console.log("foundMatch", foundMatch);
     if (chosenCandidate.some((chosen) => candidates.indexOf(chosen) !== -1)) {
       let justChosen = [];
       for (let i = 0; i < candidates.length; i++) {
