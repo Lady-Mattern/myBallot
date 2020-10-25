@@ -1,25 +1,42 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "./CandidateCard.scss";
 import { DataContext } from "../../App";
 
-function CandidateCard({ candidate, categoryName, position }) {
+function CandidateCard({
+  candidate,
+  categoryName,
+  position,
+  handleChosenCandidate,
+  addToBallot,
+  chosenCandidate,
+}) {
   const { ballot, setBallot } = useContext(DataContext);
 
   const handleAddClick = () => {
-    let cName = categoryName.split(" ").join("");
-    let b = ballot[cName];
-
-    b.push({
-      name: candidate.BallotName,
-      party: candidate.PartyName,
-      position: position,
-    });
-
-    setBallot({
-      ...ballot,
-      cName: b,
-    });
+    handleChosenCandidate();
   };
+
+  //  const position = cardData.BallotTitle;
+  useEffect(() => {
+    if (position !== undefined) {
+      let cName = categoryName.split(" ").join("");
+      ballot[cName] = [];
+      chosenCandidate.forEach((candidate) =>
+        ballot[cName].push({
+          BallotName: candidate.BallotName,
+          PartyName: candidate.PartyName,
+          position: position,
+        })
+      );
+      console.log("ballot[cName]", ballot[cName]);
+
+      setBallot({
+        ...ballot,
+      });
+    }
+  }, [chosenCandidate]);
+
+  console.log("addToBallot", addToBallot);
 
   return (
     <div className="candidate-card">
@@ -36,12 +53,21 @@ function CandidateCard({ candidate, categoryName, position }) {
           <li>3. Issue</li>
         </ol>
         <div className="buttonGroup">
-          <button
-            className="addToBallotButton"
-            onClick={() => handleAddClick()}
-          >
-            ADD TO BALLOT
-          </button>
+          {addToBallot ? (
+            <button
+              className="addToBallotButton"
+              onClick={() => handleAddClick()}
+            >
+              REMOVE FROM BALLOT
+            </button>
+          ) : (
+            <button
+              className="addToBallotButton"
+              onClick={() => handleAddClick()}
+            >
+              ADD TO BALLOT
+            </button>
+          )}
           <button className="learnMoreButton">LEARN MORE</button>
         </div>
       </div>

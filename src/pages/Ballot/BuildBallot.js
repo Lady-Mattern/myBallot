@@ -14,9 +14,14 @@ function BallotMeasure() {
   const [isDropCardClicked, setIsDroCardClicked] = useState(false);
   const [cardData, setCardData] = useState({});
 
+  const [chosenCandidates, setChosenCandidates] = useState([]);
+
   const handleDropCardClick = (data) => {
     console.log("dropCardClick");
-    if (data !== undefined) setCardData(data);
+    if (data !== undefined) {
+      setCardData(data);
+      console.log("card data", data);
+    }
     setIsDroCardClicked(!isDropCardClicked);
   };
 
