@@ -7,8 +7,8 @@ function Dropdowns({category, name, clickedName, handleDropCardClick}){
     
     let style = name === clickedName ? 'open-dropdown' : 'closed-dropdown';
 
-    // console.log(category);
-    // console.log(category.Races[0]);
+    console.log(category);
+    console.log("category.Races[0]", category.Races[0]);
 
     return(
         <> 

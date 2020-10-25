@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import "./CandidateCard.scss";
 import { DataContext } from "../../App";
 
@@ -10,9 +10,9 @@ function CandidateCard({
   addToBallot,
 }) {
   const { ballot, setBallot } = useContext(DataContext);
-  // const [addToBallot, setAddToBallot] = useState(false);
 
   const handleAddClick = () => {
+    handleChosenCandidate();
     let cName = categoryName.split(" ").join("");
     let b = ballot[cName];
 
@@ -26,12 +26,8 @@ function CandidateCard({
       ...ballot,
       cName: b,
     });
-
-    // setAddToBallot(!addToBallot);
-    handleChosenCandidate();
   };
 
-  // const handleClick
   console.log("addToBallot", addToBallot);
 
   return (

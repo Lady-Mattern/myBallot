@@ -68,12 +68,15 @@ function EndBallotPage() {
       <div id="ballot-container">
         <div className="catCard">
           <h2>Federal Candidates</h2>
-          {ballot.FederalCandidates.map((candidate) => (
-            <div className="infoCard">
-              <p className="position">{candidate.position}</p>
-              <p className="name">{candidate.name}</p>
-            </div>
-          ))}
+          {ballot.FederalCandidates.map((candidate) => {
+            console.log("candidateeee", candidate);
+            return (
+              <div className="infoCard">
+                <p className="position">{candidate.position}</p>
+                <p className="name">{candidate.BallotName}</p>
+              </div>
+            );
+          })}
         </div>
 
         <div className="catCard">
@@ -81,7 +84,7 @@ function EndBallotPage() {
           {ballot.StatewideCandidates.map((candidate) => (
             <div className="infoCard">
               <p className="position">{candidate.position}</p>
-              <p className="name">{candidate.name}</p>
+              <p className="name">{candidate.BallotName}</p>
             </div>
           ))}
         </div>
@@ -91,7 +94,7 @@ function EndBallotPage() {
           {ballot.JudicialCandidates.map((candidate) => (
             <div className="infoCard">
               <p className="position">{candidate.position}</p>
-              <p className="name">{candidate.name}</p>
+              <p className="name">{candidate.BallotName}</p>
             </div>
           ))}
         </div>
@@ -101,7 +104,7 @@ function EndBallotPage() {
           {ballot.LegislativeCandidates.map((candidate) => (
             <div className="infoCard">
               <p className="position">{candidate.position}</p>
-              <p className="name">{candidate.name}</p>
+              <p className="name">{candidate.BallotName}</p>
             </div>
           ))}
         </div>
